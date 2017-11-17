@@ -1,0 +1,88 @@
+<div class="title">
+    <h1> This is sample page with code samples that can be resused</h1>
+    <h3> These code samples use the <a href="https://bulma.io/">Bulma Framework</a> </h3>    
+</div>
+
+<h1>Forms</h1>
+<div class="sample-form-content">
+  <div id="contact-us">
+    <!-- start form -->
+    <form #sampleForm="ngForm" (ngSubmit)="onSubmit(contact)">
+
+      <div class="field is-horizontal">
+        <div class="field-body">
+          <div class="field">
+            <p class="control is-expanded has-icons-left">
+              <input class="input" [ngClass]="{'input-error': input.fullname}" placeholder="Full Name" #fullname="ngModel" name="fullname"
+                type="text" [(ngModel)]="contact.fullname" required (blur)="inputCheck('fullname',fullname.valid)">
+              <span class="icon is-small is-left">
+                <i class="fa fa-user"></i>
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="field is-horizontal">
+        <div class="field-body">
+          <div class="field">
+            <p class="control is-expanded has-icons-left has-icons-right">
+              <input class="input" [ngClass]="{'input-error': input.email}" type="email" placeholder="Email" #email="ngModel" name="email"
+                [(ngModel)]="contact.email" required (blur)="inputCheck('email',email.valid)" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                required>
+              <span class="icon is-small is-left">
+                <i class="fa fa-envelope"></i>
+              </span>
+            </p>
+          </div>
+          <div class="field is-expanded">
+            <div class="field">
+              <p class="control is-expanded has-icons-left">
+                <input class="input" type="tel" [ngClass]="{'input-error': input.phoneNumber}" placeholder="Phone number" #phoneNumber="ngModel"
+                  name="phoneNumber" [(ngModel)]="contact.phoneNumber" [maxlength]='14' [minlength]='14' (keyup)="formatNumber(phoneNumber.model)"
+                  required (blur)="inputCheck('phoneNumber',phoneNumber.valid)" required>
+                <span class="icon is-small is-left">
+                  <i class="fa fa-phone"></i>
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="field is-horizontal">
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <input class="input" type="text" placeholder="Subject - e.g. Partnership opportunity" [ngClass]="{'input-error': input.subject}"
+                #subject="ngModel" name="subject" [(ngModel)]="contact.subject" (blur)="inputCheck('subject', subject.valid)"
+                required>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field is-horizontal">
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <textarea class="textarea" placeholder="Explain how we can help you" [ngClass]="{'input-error': input.comments}" #comments="ngModel"
+                name="comments" [(ngModel)]="contact.comments" (blur)="inputCheck('comments', comments.valid)" required></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="button is-primary" [ngClass]="{'is-loading': submit}" *ngIf='checking' [disabled]="!sampleForm.valid || submit">
+        Submit
+      </button>
+      <div class="notification is-primary" *ngIf='success'>
+        <button class="delete" (click)="exit()"></button> Thank You. Your info has been submitted.
+      </div>
+      <div class="notification is-danger" *ngIf='failure'>
+        <button class="delete" (click)="exit()"></button> Unable to submit form at this time. Please try Again. If problems persist please email
+        <strong>roberto@urbantxt.com</strong>
+      </div>
+
+    </form>
+  </div>
+</div>

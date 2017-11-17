@@ -1,0 +1,41 @@
+.title {
+    padding-top: 100px;
+    text-align: center;
+}
+
+.notification.is-primary {
+    background-color: #189EB3;
+}
+
+.button.is-primary {
+    display: block;
+    margin: auto;
+    background-color: #189EB3;
+}
+
+.button.is-primary:hover {
+    color: #189EB3;
+    border: solid thin #189EB3;
+    background-color: transparent;
+}
+
+.input.is-active,
+.input.is-focused,
+.input:active,
+.input:focus,
+.textarea.is-active,
+.textarea.is-focused,
+.textarea:active,
+.textarea:focus {
+    border-color: #189EB3;
+    -webkit-box-shadow: 0 0 0 .125em rgba(0, 209, 178, .25);
+    box-shadow: 0 0 0 .125em rgba(0, 209, 178, .25);
+}
+
+.input-error {
+    border: solid thin #ff0000;
+}
+
+.input-success {
+    border: solid thin #189EB3;
+}
